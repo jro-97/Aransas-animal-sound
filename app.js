@@ -594,21 +594,24 @@ function renderFrequencyChart() {
   const svg = $('freqChart');
   if (!svg) return;
 
-  const VW = 820, VH = 300;
+  const VW = 820, VH = 360;
   const ML = 175, MR = 45, MT = 30, MB = 55;
   const CW = VW - ML - MR;    // 600
-  const CH = VH - MT - MB;    // 215
+  const CH = VH - MT - MB;    // 275
 
   const toX = hz => ML + (hz / 3000) * CW;
 
   // Species data  (name, freqMin, freqMax, matchColor, matchPct, note)
+  // Sorted by match % descending; Mystery Call always first
   const rows = [
-    { name: 'Mystery Call ★',  min:1030, max:1060, col:'#f0b830', pct:100, isStar:true },
-    { name: 'Jaguarundi',      min: 900, max:1200, col:'#c44a20', pct: 90 },
-    { name: 'Ring-Tailed Lemur', min:800, max:1200, col:'#d4941a', pct: 85 },
-    { name: 'Kinkajou',        min: 800, max:1500, col:'#8ab840', pct: 70 },
-    { name: 'Coatimundi',      min: 500, max:2000, col:'#5a9abf', pct: 50 },
-    { name: 'Pauraque',        min: 800, max:1500, col:'#7a6868', pct: 40, sweep:true },
+    { name: 'Mystery Call ★',    min:1030, max:1060, col:'#f0b830', pct:100, isStar:true },
+    { name: 'Jaguarundi',        min: 900, max:1200, col:'#c44a20', pct: 90 },
+    { name: 'Ring-Tailed Lemur', min: 800, max:1200, col:'#d4941a', pct: 85 },
+    { name: 'Kinkajou',          min: 800, max:1500, col:'#8ab840', pct: 70 },
+    { name: 'Pygmy-Owl 🦉',      min: 800, max:1100, col:'#9b6bb5', pct: 60 },
+    { name: 'Night-Heron 🦢',    min: 600, max:1100, col:'#4db8a0', pct: 52 },
+    { name: 'Coatimundi',        min: 500, max:2000, col:'#5a9abf', pct: 50 },
+    { name: 'Pauraque',          min: 800, max:1500, col:'#7a6868', pct: 40, sweep:true },
   ];
 
   const rowH  = CH / rows.length;   // ~35.8
@@ -695,8 +698,8 @@ function renderFrequencyChart() {
             font-family="Inter,sans-serif">${row.isStar ? '' : row.pct + '%'}</text>`;
   });
 
-  // Pauraque sweep annotation
-  s += `<text x="${toX(1150)}" y="${MT + 5 * rowH + rowH / 2 + 4}"
+  // Pauraque sweep annotation (row index 7)
+  s += `<text x="${toX(1150)}" y="${MT + 7 * rowH + rowH / 2 + 4}"
           fill="rgba(122,104,104,0.6)" font-size="9" font-style="italic"
           font-family="Inter,sans-serif"> ↗ sweeps upward</text>`;
 
@@ -794,6 +797,26 @@ const VOTE_REVEALS = {
            flashlight beams, and are perfectly camouflaged. But their call is a rising buzzy
            whistle that sweeps upward in frequency, which is the opposite of what the spectral
            analysis shows. Still, never rule out a nightjar! They're wild South Texas spirits.`,
+  },
+  nightheron: {
+    emoji: '🦢',
+    text: `<strong>Hiding in plain sight — or rather, plain darkness.</strong>
+           Black-crowned Night-Herons are one of the most common birds on the Texas coast,
+           but almost nobody recognizes their call because they're always heard at night, never
+           seen. If this was a night-heron, it was almost certainly flying over the property
+           toward Aransas Bay, calling as it went — a perfectly ordinary event that sounded
+           extraordinary in the dark. There's an active nesting colony at Aransas NWR just
+           30 miles away. Listen for their "quok" on any walk near coastal water after sunset.`,
+  },
+  pygmyowl: {
+    emoji: '🦉',
+    text: `<strong>South Texas's best-kept secret.</strong>
+           The Ferruginous Pygmy-Owl's flat, monotone toot is genuinely the closest bird call
+           to a pure-tone flat-contour signal of any Texas species. If this is your pick, you're
+           thinking like a careful birder — the pitch contour match is real. The main challenge
+           is the call pattern: pygmy-owls typically toot rapidly in series, not in widely spaced
+           single bursts. Still, a bird at the northern fringe of its range could behave
+           differently. Worth a dedicated listen on the next quiet February night.`,
   },
 };
 

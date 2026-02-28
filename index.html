@@ -20,7 +20,7 @@
       <p class="site-subtitle">A Texas Mystery</p>
       <p class="site-tagline">
         Something called from the darkness on a rural South Texas property.<br />
-        The recording is 44 seconds long. Five suspects. One answer.
+        The recording is 44 seconds long. Seven suspects. One answer.
       </p>
     </div>
   </header>
@@ -56,7 +56,7 @@
             <div class="step-num">4</div>
             <div class="step-text">
               <strong>Meet the suspects</strong>
-              <span>Five species could be responsible. Tap each case file to explore the evidence for and against.</span>
+              <span>Seven species could be responsible — including two birds you may never have considered. Tap each case file to explore the evidence for and against.</span>
             </div>
           </div>
           <div class="start-step">
@@ -304,7 +304,7 @@
     <div class="container">
       <div class="section-header">
         <h2>🔎 The Suspect Lineup</h2>
-        <p class="section-desc">Five candidates. Tap any case file to investigate the evidence for and against.</p>
+        <p class="section-desc">Seven candidates. Tap any case file to investigate the evidence for and against.</p>
       </div>
 
       <div class="lineup" id="lineupGrid">
@@ -554,6 +554,116 @@
           </div>
         </article>
 
+        <!-- ─── Bird Suspects Divider ─── -->
+        <div class="lineup-divider">
+          <div class="divider-rule"></div>
+          <div class="lineup-divider-label">
+            <span class="lineup-divider-title">🐦 Bird Suspects</span>
+            <span class="lineup-divider-sub">Could it have been a bird all along? Two local species deserve a closer look.</span>
+          </div>
+          <div class="divider-rule"></div>
+        </div>
+
+        <!-- ─── SUSPECT 6: Black-crowned Night-Heron ─── -->
+        <article class="suspect-card" data-id="nightheron">
+          <div class="suspect-header" onclick="toggleSuspect('nightheron')" tabindex="0" role="button" aria-expanded="false">
+            <div class="suspect-emoji" aria-hidden="true">🦢</div>
+            <div class="suspect-info">
+              <div class="suspect-rank">BIRD CANDIDATE #1</div>
+              <h3 class="suspect-name">Black-crowned Night-Heron</h3>
+              <div class="suspect-sci">Nycticorax nycticorax</div>
+              <div class="suspect-badge badge--low">The Coastal Stalker · Likely</div>
+            </div>
+            <div class="suspect-match">
+              <div class="match-pct" style="color: #4db8a0">52%</div>
+              <div class="match-label">Acoustic Match</div>
+              <div class="match-bar-bg"><div class="match-bar-fill" style="width:52%; background: #4db8a0"></div></div>
+            </div>
+            <div class="expand-arrow" id="arrow-nightheron">▼</div>
+          </div>
+          <div class="suspect-body" id="body-nightheron">
+            <div class="for-against">
+              <div class="for-col">
+                <h4 class="col-hdr for-hdr">✅ Evidence FOR</h4>
+                <ul>
+                  <li>Year-round resident — thousands roost at Aransas NWR just 30 miles away</li>
+                  <li>Strictly nocturnal forager: 7 PM is exactly when they begin flying and calling</li>
+                  <li>"Quok" flight call: short, abrupt, fairly tonal burst at <strong>600–1100 Hz</strong></li>
+                  <li>Calls repeatedly while flying between roosts and feeding areas — explains multiple events</li>
+                  <li>Coastal marshes and rural properties near water are prime night-heron territory</li>
+                  <li>People consistently hear night-herons at night without recognizing the source</li>
+                </ul>
+              </div>
+              <div class="against-col">
+                <h4 class="col-hdr against-hdr">❌ Evidence AGAINST</h4>
+                <ul>
+                  <li>"Quok" is hoarser and more broadband — not the pure 1040 Hz flat tone the recording shows</li>
+                  <li>Typically calls while airborne — inconsistent with "ground-dwelling" observation</li>
+                  <li>Standard call is usually louder than what's captured in this recording</li>
+                </ul>
+              </div>
+            </div>
+            <div class="suspect-vocal">
+              <h4>🎵 Typical Vocalization</h4>
+              <p>"Quok" or "wok" contact call at <strong>600–1100 Hz</strong>, 200–350 ms. Short, bark-like, repeated while in flight. Far more tonal than most people expect from a heron.</p>
+            </div>
+            <div class="suspect-funfact">
+              <span class="ff-badge">🌟 Local Connection</span>
+              There is an active Black-crowned Night-Heron nesting colony at Aransas National Wildlife Refuge, fewer than 30 miles from the recording site. On any February night, dozens of them fly over coastal properties calling — and almost nobody recognizes the sound.
+            </div>
+          </div>
+        </article>
+
+        <!-- ─── SUSPECT 7: Ferruginous Pygmy-Owl ─── -->
+        <article class="suspect-card" data-id="pygmyowl">
+          <div class="suspect-header" onclick="toggleSuspect('pygmyowl')" tabindex="0" role="button" aria-expanded="false">
+            <div class="suspect-emoji" aria-hidden="true">🦉</div>
+            <div class="suspect-info">
+              <div class="suspect-rank">BIRD CANDIDATE #2</div>
+              <h3 class="suspect-name">Ferruginous Pygmy-Owl</h3>
+              <div class="suspect-sci">Glaucidium brasilianum</div>
+              <div class="suspect-badge badge--unlikely">The Invisible Tooter · Plausible</div>
+            </div>
+            <div class="suspect-match">
+              <div class="match-pct" style="color: #9b6bb5">60%</div>
+              <div class="match-label">Acoustic Match</div>
+              <div class="match-bar-bg"><div class="match-bar-fill" style="width:60%; background: #9b6bb5"></div></div>
+            </div>
+            <div class="expand-arrow" id="arrow-pygmyowl">▼</div>
+          </div>
+          <div class="suspect-body" id="body-pygmyowl">
+            <div class="for-against">
+              <div class="for-col">
+                <h4 class="col-hdr for-hdr">✅ Evidence FOR</h4>
+                <ul>
+                  <li>Monotone "toot" series: <strong>flat-pitch calls at ~800–1000 Hz</strong> — the flattest, most tonal call of any Texas owl</li>
+                  <li>Year-round resident in South Texas brush; eBird records documented from Aransas County</li>
+                  <li>Only 6 inches tall — moves through dense brush completely undetected</li>
+                  <li>Active at dusk and into early night — 7 PM is right in its vocal window</li>
+                  <li>Virtually unknown to the general public: strong "I don't know what that is" factor</li>
+                  <li>Flat pitch contour genuinely resembles the mystery recording's acoustic signature</li>
+                </ul>
+              </div>
+              <div class="against-col">
+                <h4 class="col-hdr against-hdr">❌ Evidence AGAINST</h4>
+                <ul>
+                  <li>Typically calls in rapid repetitive series (2+ notes/second) — not the irregularly spaced events in the recording</li>
+                  <li>Aransas County is at the northern fringe of its documented Texas range</li>
+                  <li>Primarily a dawn and dusk caller — less active deep into the night</li>
+                </ul>
+              </div>
+            </div>
+            <div class="suspect-vocal">
+              <h4>🎵 Typical Vocalization</h4>
+              <p>Rapid series of flat monotone "toot" notes at <strong>800–1000 Hz</strong>. Unlike any other owl — no tremolo, no sweep, no variation. A steady mechanical toot repeated 2–3 times per second.</p>
+            </div>
+            <div class="suspect-funfact">
+              <span class="ff-badge">🌟 Wild Card</span>
+              At just 6 inches tall, Ferruginous Pygmy-Owls are notorious bullies of the bird world — they regularly hunt prey larger than themselves. Songbirds mob them so ferociously when discovered that birders use pygmy-owl calls as a top luring technique. If this is a pygmy-owl, it's operating at the absolute edge of its documented Texas range.
+            </div>
+          </div>
+        </article>
+
       </div><!-- /lineup -->
     </div>
   </section>
@@ -597,6 +707,18 @@
             <div class="vc-name">Pauraque</div>
             <div class="vc-sub">The South Texas Nightjar</div>
             <div class="vc-match">40% match</div>
+          </button>
+          <button class="vote-card" data-candidate="nightheron" onclick="castVote('nightheron')">
+            <div class="vc-emoji">🦢</div>
+            <div class="vc-name">Night-Heron</div>
+            <div class="vc-sub">The Coastal Stalker</div>
+            <div class="vc-match">52% match</div>
+          </button>
+          <button class="vote-card" data-candidate="pygmyowl" onclick="castVote('pygmyowl')">
+            <div class="vc-emoji">🦉</div>
+            <div class="vc-name">Pygmy-Owl</div>
+            <div class="vc-sub">The Invisible Tooter</div>
+            <div class="vc-match">60% match</div>
           </button>
         </div>
       </div>

@@ -650,6 +650,38 @@ code {
 /* ── Suspect Lineup ─────────────────────────────────────── */
 .lineup { display: flex; flex-direction: column; gap: 14px; }
 
+/* Bird suspects divider */
+.lineup-divider {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 0 4px;
+}
+.divider-rule {
+  height: 1px;
+  background: var(--border);
+}
+.lineup-divider-label {
+  text-align: center;
+  white-space: nowrap;
+}
+.lineup-divider-title {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-mid);
+}
+.lineup-divider-sub {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-top: 4px;
+  font-style: italic;
+}
+
 .suspect-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
