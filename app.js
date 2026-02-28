@@ -64,6 +64,7 @@ const playerExtras   = $('playerExtras');
 async function init() {
   renderFrequencyChart();
   checkVoteState();
+  setupSuspectKeyboard();
 
   try {
     loadingStatus.textContent = 'Fetching ' + AUDIO_FILE + '…';
@@ -241,6 +242,34 @@ document.addEventListener('mouseup', e => {
   dragging = false;
   const rect = progressTrack.getBoundingClientRect();
   const frac = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+  seekTo(frac * audioBuffer.duration);
+});
+
+// Touch drag on progress bar
+let touchDragging = false;
+progressTrack.addEventListener('touchstart', e => {
+  if (!audioBuffer) return;
+  touchDragging = true;
+  const rect = progressTrack.getBoundingClientRect();
+  const frac = Math.max(0, Math.min(1, (e.touches[0].clientX - rect.left) / rect.width));
+  updateProgress(frac);
+  e.preventDefault();
+}, { passive: false });
+
+document.addEventListener('touchmove', e => {
+  if (!touchDragging || !audioBuffer) return;
+  const rect = progressTrack.getBoundingClientRect();
+  const frac = Math.max(0, Math.min(1, (e.touches[0].clientX - rect.left) / rect.width));
+  updateProgress(frac);
+  e.preventDefault();
+}, { passive: false });
+
+document.addEventListener('touchend', e => {
+  if (!touchDragging || !audioBuffer) return;
+  touchDragging = false;
+  const rect = progressTrack.getBoundingClientRect();
+  const touch = e.changedTouches[0];
+  const frac = Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width));
   seekTo(frac * audioBuffer.duration);
 });
 
@@ -682,9 +711,8 @@ function renderFrequencyChart() {
 // SUSPECT CARD TOGGLE
 // ════════════════════════════════════════════════════════════
 function toggleSuspect(id) {
-  const card  = document.querySelector(`.suspect-card[data-id="${id}"]`);
-  const body  = $(`body-${id}`);
-  const arrow = $(`arrow-${id}`);
+  const card = document.querySelector(`.suspect-card[data-id="${id}"]`);
+  const body = $(`body-${id}`);
   if (!card || !body) return;
 
   const isOpen = card.classList.contains('is-open');
@@ -692,15 +720,31 @@ function toggleSuspect(id) {
   // Close all others
   document.querySelectorAll('.suspect-card.is-open').forEach(c => {
     c.classList.remove('is-open');
+    const h = c.querySelector('.suspect-header');
+    if (h) h.setAttribute('aria-expanded', 'false');
   });
 
   if (!isOpen) {
     card.classList.add('is-open');
+    const header = card.querySelector('.suspect-header');
+    if (header) header.setAttribute('aria-expanded', 'true');
     // Smooth scroll into view on mobile
     setTimeout(() => {
       card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }, 50);
   }
+}
+
+function setupSuspectKeyboard() {
+  document.querySelectorAll('.suspect-header').forEach(header => {
+    header.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const card = header.closest('.suspect-card');
+        if (card) toggleSuspect(card.dataset.id);
+      }
+    });
+  });
 }
 
 // ════════════════════════════════════════════════════════════

@@ -423,9 +423,7 @@ code {
   background: var(--gold-bright);
   border-radius: 50%;
   pointer-events: none;
-  display: none;
 }
-.progress-track:hover .progress-thumb { display: block; }
 
 .vol-section {
   display: flex;
@@ -508,6 +506,22 @@ code {
 }
 .jump-btn:hover { border-color: var(--rust); color: var(--rust); background: rgba(196,74,32,0.1); }
 .jump-btn.active { border-color: var(--rust); background: rgba(196,74,32,0.15); color: #e08060; }
+
+.kbd-hint {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  width: 100%;
+  margin-top: 2px;
+}
+.kbd-hint kbd {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-size: 0.7rem;
+  font-family: 'Inter', sans-serif;
+}
+@media (max-width: 720px) { .kbd-hint { display: none; } }
 
 /* ── Scene Section ──────────────────────────────────────── */
 .scene-grid {
@@ -950,7 +964,7 @@ code {
   .vote-card { padding: 18px 12px; }
 
   .spect-labels { min-width: 44px; font-size: 0.6rem; }
-  .spect-label-mid { display: none; }
+  .spect-label-mid { font-size: 0.56rem; }
 }
 
 @media (max-width: 480px) {
